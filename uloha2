@@ -1,0 +1,54 @@
+#cesarova šifra znamená že má len jeden kluč
+#napíš funkciu 
+
+#def code(s:str,p:int):
+
+#prejdeš ten string znak a po znaku a 
+# pre každý zank urobím to čo bolo na tabuli  
+# potom 
+
+#def decode():
+
+
+
+# nevedel som ako to urobiť z hodiny kedže som si zle tú úlohu zapísal ale pomocou 
+# internetu a múdrich programátorov z indie som to urobil a pochopil
+
+
+
+
+
+def code(text, shift):
+    code_text = ""
+    for písmenko in text:
+        if písmenko.isalpha():
+            if písmenko.isupper():
+                code_text += chr((ord(písmenko) + shift - 65) % 26 + 65)#pre veľké znaky abecedy
+            else:
+                code_text += chr((ord(písmenko) + shift - 97) % 26 + 97)#pre malé znaky abecedy
+        else:
+            code_text += písmenko # ak nie je v šifre napísaná čislica alebo znaktak program ju tak a zapíše do konečnej šifri
+    return code_text # funguje to aj keď zadáme konečné znaky abecedy xyz = abc (pri posune o 3)
+
+def decode(fintext, shift):
+    decode_text = ""
+    for písmenko in fintext:
+        if písmenko.isalpha():
+            if písmenko.isupper():
+                decode_text += chr((ord(písmenko) - shift - 65) % 26 + 65)# veľké znaky
+            else:
+                decode_text += chr((ord(písmenko) - shift - 97) % 26 + 97)# malé znaky
+        else:
+            decode_text += písmenko
+    return decode_text
+
+
+text = "abc"   # samotný text na zakódovanie a dekódovanie
+shift = 3     # tu napíšeme o koľko chceme posunúť dané písmenko v abecede
+
+code_text = code(text, shift)
+decode_text = decode(code_text, shift)
+
+print("zašifrovaný text: ", code_text)
+print("dešifrovaný text: ", decode_text)
+
